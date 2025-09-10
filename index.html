@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Suha — Sunkissed Style</title>
+  <style>
+    :root{
+      --yellow-banner: #ffd54a;     /* banner background */
+      --cool-yellow: #fffaf0;       /* light cool yellow for pages */
+      --orange-box: #ff8c42;        /* category boxes */
+      --brown-btn: #6b3e26;         /* brown buttons */
+      --muted: #6c6c6c;
+      --card-bg: #fff;
+      --max-width: 1100px;
+      --radius: 12px;
+      --shadow: 0 6px 20px rgba(0,0,0,0.08);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    body{
+      margin:0;
+      background: var(--cool-yellow);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:28px 16px;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      box-sizing:border-box;
+    }
+
+    /* --- Main Banner (Home) --- */
+    .banner{
+      background: linear-gradient(180deg, var(--yellow-banner), #ffd166);
+      border-radius: var(--radius);
+      padding:28px;
+      box-shadow: var(--shadow);
+      display:flex;
+      gap:20px;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    .banner-left{
+      flex:1 1 480px;
+      min-width:220px;
+    }
+
+    .site-title{
+      font-size:28px;
+      margin:0 0 8px 0;
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
+
+    .site-sub{
+      margin:0 0 18px 0;
+      font-size:16px;
+      color:var(--muted);
+    }
+
+    .hero-text{
+      margin-top:10px;
+      font-size:16px;
+      line-height:1.4;
+      color:#3a2f2a;
+      background: rgba(255,255,255,0.6);
+      padding:12px;
+      border-radius:10px;
+      max-width:620px;
+    }
+
+    .banner-right{
+      width:360px;
+      min-width:200px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .hero-image{
+      width:320px;
+      height:420px;
+      border-radius:16px;
+      object-fit:cover;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      border:6px solid rgba(255,255,255,0.6);
+      background: #fde8c7;
+    }
+
+    /* --- Catalog Page --- */
+    .catalog{
+      margin-top:22px;
+      background: var(--cool-yellow);
+      padding:20px;
+      border-radius:12px;
+    }
+
+    .categories{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .cat-box{
+      background:var(--orange-box);
+      color:white;
+      padding:10px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow:0 6px 18px rgba(255,140,66,0.18);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .cat-box:hover{ transform:translateY(-4px); box-shadow:0 10px 26px rgba(0,0,0,0.12); }
+
+    .intro{
+      margin:12px 0 20px 0;
+      font-size:16px;
+      color:#4b3b35;
+      max-width:900px;
+    }
+
+    .shop-glow{
+      display:inline-block;
+      background:var(--brown-btn);
+      color:#fff;
+      border:none;
+      padding:12px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+      letter-spacing:0.3px;
+      margin-top:12px;
+      box-shadow:0 8px 20px rgba(107,62,38,0.18);
+    }
+
+    /* --- Category page layout --- */
+    .category-page{
+      margin-top:26px;
+      background: #fff;
+      padding:18px;
+      border-radius:12px;
+      box-shadow: var(--shadow);
+    }
+
+    .category-title{
+      font-size:20px;
+      margin:0 0 16px 0;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+    }
+
+    .card img{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      border-radius:10px;
+      margin-bottom:10px;
+    }
+
+    .price-btn{
+      background:var(--brown-btn);
+      color:#fff;
+      border:none;
+      padding:10px 14px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+      width:100%;
+      box-shadow:0 6px 18px rgba(107,62,38,0.12);
+    }
+
+    /* small helpers */
+    .hidden{ display:none; }
+    .center { text-align:center; }
+
+    /* responsive */
+    @media (max-width:880px){
+      .banner{flex-direction:column; padding:18px;}
+      .banner-right{width:100%;}
+      .hero-image{width:88%; height:360px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- MAIN BANNER / HOME -->
+    <section id="homeView">
+      <div class="banner" role="banner" aria-label="Sunkissed Style banner">
+        <div class="banner-left">
+          <h1 class="site-title">Sunkissed Style — Suha</h1>
+          <p class="site-sub">Summer Shopping Collection</p>
+
+          <!-- hero image is on the right; below the image we show the line as requested -->
+          <div class="hero-text">
+            Effortless elegance crafted for your perfect summer moments. From casual daywear to chic evening looks, our collection is designed to keep you cool, stylish, and radiant all season long.
+          </div>
+
+          <div style="margin-top:16px;">
+            <button class="shop-glow" id="gotoCatalogBtn">Shop the Glow</button>
+          </div>
+        </div>
+
+        <div class="banner-right">
+          <!-- placeholder image of a woman in summer clothes -->
+          <!-- replace the src with your own high-res image if you want -->
+          <img class="hero-image" alt="Woman wearing summer clothes" src="https://picsum.photos/seed/suha-hero/640/840" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG / CATEGORY SELECTION PAGE -->
+    <section id="catalogView" class="catalog hidden" aria-hidden="true">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
+        <h2 style="margin:0;">Suha — Sunkissed Style</h2>
+        <div style="font-size:14px; color:var(--muted);">Summer Collection</div>
+      </div>
+
+      <!-- Category boxes at top -->
+      <div class="categories" role="tablist" aria-label="Product categories" style="margin-top:12px;">
+        <div class="cat-box" data-cat="shirts" tabindex="0">Shirts</div>
+        <div class="cat-box" data-cat="skirts" tabindex="0">Skirts</div>
+        <div class="cat-box" data-cat="tshirts" tabindex="0">T-shirts</div>
+        <div class="cat-box" data-cat="longskirts" tabindex="0">Long Skirts</div>
+        <div class="cat-box" data-cat="dresses" tabindex="0">Dresses</div>
+      </div>
+
+      <!-- Intro text + Shop the Glow button -->
+      <p class="intro">
+        Celebrate the elegance of summer with Suha’s Sunkissed Style Collection.
+      </p>
+      <button id="shopGlowBtn" class="shop-glow" style="background:var(--brown-btn);">Shop the Glow</button>
+
+      <!-- Container for category pages (each hidden until activated) -->
+      <div id="categoryContainer" style="margin-top:18px;">
+        <!-- default message -->
+        <div id="defaultMsg" class="category-page center">
+          <p style="margin:0; font-weight:600;">Select a category above to view the items.</p>
+        </div>
+
+        <!-- Shirts -->
+        <div id="cat-shirts" class="category-page hidden">
+          <div class="category-title">
+            <div>Shirts</div>
+            <div style="color:var(--muted); font-size:14px;">Light, breathable & summer-ready</div>
+          </div>
+          <div class="grid" aria-live="polite">
+            <div class="card">
+              <img src="https://picsum.photos/seed/shirt1/800/600" alt="Summer shirt 1" />
+              <div style="margin:8px 0; font-weight:600;">Linen Summer Shirt</div>
+              <button class="price-btn">₹1,299</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/shirt2/800/600" alt="Summer shirt 2" />
+              <div style="margin:8px 0; font-weight:600;">Printed Cotton Shirt</div>
+              <button class="price-btn">₹999</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/shirt3/800/600" alt="Summer shirt 3" />
+              <div style="margin:8px 0; font-weight:600;">Breezy Poplin Shirt</div>
+              <button class="price-btn">₹1,199</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skirts -->
+        <div id="cat-skirts" class="category-page hidden">
+          <div class="category-title">
+            <div>Skirts</div>
+            <div style="color:var(--muted); font-size:14px;">Playful cuts & lightweight fabrics</div>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <img src="https://picsum.photos/seed/skirt1/800/600" alt="Skirt 1" />
+              <div style="margin:8px 0; font-weight:600;">A-line Mini Skirt</div>
+              <button class="price-btn">₹899</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/skirt2/800/600" alt="Skirt 2" />
+              <div style="margin:8px 0; font-weight:600;">Floral Wrap Skirt</div>
+              <button class="price-btn">₹1,099</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/skirt3/800/600" alt="Skirt 3" />
+              <div style="margin:8px 0; font-weight:600;">Textured Pleat Skirt</div>
+              <button class="price-btn">₹1,249</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- T-shirts -->
+        <div id="cat-tshirts" class="category-page hidden">
+          <div class="category-title">
+            <div>T-shirts</div>
+            <div style="color:var(--muted); font-size:14px;">Everyday essentials with a sunny twist</div>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <img src="https://picsum.photos/seed/tshirt1/800/600" alt="T-shirt 1" />
+              <div style="margin:8px 0; font-weight:600;">Organic Cotton Tee</div>
+              <button class="price-btn">₹599</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/tshirt2/800/600" alt="T-shirt 2" />
+              <div style="margin:8px 0; font-weight:600;">Graphic Summer Tee</div>
+              <button class="price-btn">₹699</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/tshirt3/800/600" alt="T-shirt 3" />
+              <div style="margin:8px 0; font-weight:600;">Relaxed V-Neck Tee</div>
+              <button class="price-btn">₹649</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Long Skirts -->
+        <div id="cat-longskirts" class="category-page hidden">
+          <div class="category-title">
+            <div>Long Skirts</div>
+            <div style="color:var(--muted); font-size:14px;">Flowing silhouettes for golden-hour looks</div>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <img src="https://picsum.photos/seed/long1/800/600" alt="Long skirt 1" />
+              <div style="margin:8px 0; font-weight:600;">Tiered Maxi Skirt</div>
+              <button class="price-btn">₹1,399</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/long2/800/600" alt="Long skirt 2" />
+              <div style="margin:8px 0; font-weight:600;">Silky Slip Skirt</div>
+              <button class="price-btn">₹1,499</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/long3/800/600" alt="Long skirt 3" />
+              <div style="margin:8px 0; font-weight:600;">Boho Printed Maxi</div>
+              <button class="price-btn">₹1,599</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dresses -->
+        <div id="cat-dresses" class="category-page hidden">
+          <div class="category-title">
+            <div>Dresses</div>
+            <div style="color:var(--muted); font-size:14px;">From day brunch to evening glow</div>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <img src="https://picsum.photos/seed/dress1/800/600" alt="Dress 1" />
+              <div style="margin:8px 0; font-weight:600;">Slip Midi Dress</div>
+              <button class="price-btn">₹1,799</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/dress2/800/600" alt="Dress 2" />
+              <div style="margin:8px 0; font-weight:600;">Floral Wrap Dress</div>
+              <button class="price-btn">₹1,899</button>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/seed/dress3/800/600" alt="Dress 3" />
+              <div style="margin:8px 0; font-weight:600;">Strapless Sundress</div>
+              <button class="price-btn">₹1,699</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    (function(){
+      const homeView = document.getElementById('homeView');
+      const catalogView = document.getElementById('catalogView');
+      const gotoCatalogBtn = document.getElementById('gotoCatalogBtn');
+      const shopGlowBtn = document.getElementById('shopGlowBtn');
+      const categoryBoxes = document.querySelectorAll('.cat-box');
+      const defaultMsg = document.getElementById('defaultMsg');
+      const categoryContainer = document.getElementById('categoryContainer');
+
+      // mapping category slug -> element id
+      const cats = {
+        shirts: document.getElementById('cat-shirts'),
+        skirts: document.getElementById('cat-skirts'),
+        tshirts: document.getElementById('cat-tshirts'),
+        longskirts: document.getElementById('cat-longskirts'),
+        dresses: document.getElementById('cat-dresses')
+      };
+
+      // show catalog view (hide home)
+      function showCatalog(){
+        homeView.classList.add('hidden');
+        catalogView.classList.remove('hidden');
+        catalogView.setAttribute('aria-hidden','false');
+        // ensure default message visible until a category chosen
+        hideAllCategories();
+        defaultMsg.classList.remove('hidden');
+        scrollToTop();
+      }
+
+      // hide all category pages
+      function hideAllCategories(){
+        defaultMsg.classList.add('hidden');
+        Object.values(cats).forEach(el => {
+          if (el) el.classList.add('hidden');
+        });
+      }
+
+      // show chosen category page
+      function showCategory(slug){
+        hideAllCategories();
+        defaultMsg.classList.add('hidden');
+        const el = cats[slug];
+        if(el){
+          el.classList.remove('hidden');
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        } else {
+          defaultMsg.classList.remove('hidden');
+        }
+      }
+
+      function scrollToTop(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // events
+      gotoCatalogBtn.addEventListener('click', showCatalog);
+      shopGlowBtn.addEventListener('click', showCatalog);
+
+      // clicking category boxes:
+      categoryBoxes.forEach(box => {
+        box.addEventListener('click', function(){
+          const cat = this.dataset.cat;
+          if(!cat) return;
+          showCategory(cat);
+        });
+        // keyboard support
+        box.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); this.click(); }
+        });
+      });
+
+      // clicking price buttons could later open a modal or cart; currently simple feedback
+      document.addEventListener('click', function(e){
+        if(e.target && e.target.classList.contains('price-btn')){
+          const priceText = e.target.innerText;
+          alert('Added to bag: ' + priceText + '\\n(Feature: cart not implemented in this demo.)');
+        }
+      });
+
+      // initial landing: show home
+      // (no-op since home is visible by default)
+    })();
+  </script>
+</body>
+</html>
